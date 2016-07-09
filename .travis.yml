@@ -24,11 +24,9 @@ install: ./gradlew setupCIWorkspace -S
 
 script:
 - ./gradlew build
-- bundle exec ./tools/split_jars.rb
 - ls -la build/libs
 - ls -la build/packages
 - bundle exec ./tools/checksum_builds.rb | tee ./checksums.txt
-- bundle exec ./tools/attribution_cross_check.rb
 
 # Deploy the artifacts back to GitHub
 deploy:
@@ -37,14 +35,14 @@ deploy:
   file_glob: true
   file:
   - "checksums.txt"
-  - "build/libs/growthcraft-*-complete.jar"
-  - "build/libs/growthcraft-*-api.jar"
-  - "build/libs/growthcraft-*-deobf.jar"
-  - "build/libs/growthcraft-*-javadoc.jar"
-  - "build/libs/growthcraft-*-sources.jar"
+  - "build/libs/apantomancy-*-complete.jar"
+  - "build/libs/apantomancy-*-api.jar"
+  - "build/libs/apantomancy-*-deobf.jar"
+  - "build/libs/apantomancy-*-javadoc.jar"
+  - "build/libs/apantomancy-*-sources.jar"
   # separate jars
-  - "build/packages/growthcraft-*-complete-*.jar"
-  - "build/packages/growthcraft-*-deobf-*.jar"
+  - "build/packages/apantomancy-*-complete-*.jar"
+  - "build/packages/apantomancy-*-deobf-*.jar"
   skip_cleanup: true
   on:
     tags: true
